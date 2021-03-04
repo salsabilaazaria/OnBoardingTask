@@ -9,33 +9,35 @@
 import AsyncDisplayKit
 
 class OnePost: ASCellNode{
-    let post: Post
-    
-    let header: Header
-    let postdesc: ASTextNode
-    
-    init(post: Post) {
-        self.post = post
-        header = Header(post: post)
-        
-        postdesc = ASTextNode()
-        postdesc.attributedText = NSAttributedString(string: post.description)
-        
-        
-        super.init()
-        self.automaticallyManagesSubnodes = true
-    }
-    
-    override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-           
-       let mainstack = ASStackLayoutSpec(direction: .vertical,
-                                                   spacing: 2,
-                                                   justifyContent: .start,
-                                                   alignItems: .start,
-                                                   children: [header, postdesc])
-                 
-        return mainstack
-       }
-    
- 
+	let post: Post
+	
+	let header: Header
+	let postdesc: ASTextNode
+	
+	init(post: Post) {
+		
+		print("ONEPOST")
+		self.post = post
+		header = Header(post: post)
+		
+		postdesc = ASTextNode()
+		postdesc.attributedText = NSAttributedString(string: post.description)
+		
+		super.init()
+		self.automaticallyManagesSubnodes = true
+	}
+	
+	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+		
+		print("ONEPOST")
+		let mainstack = ASStackLayoutSpec(direction: .vertical,
+										  spacing: 2,
+										  justifyContent: .start,
+										  alignItems: .start,
+										  children: [header, postdesc])
+		
+		return mainstack
+	}
+	
+	
 }

@@ -23,7 +23,7 @@ PODS:
     - Texture/Core
 
 DEPENDENCIES:
-  - Texture
+  - Texture (= 2.7)
 
 SPEC REPOS:
   trunk:
@@ -38,6 +38,6 @@ SPEC CHECKSUMS:
   PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
   Texture: 9d7e38965cf22ccd7cd9c249dd78b3f14e70ab6c
 
-PODFILE CHECKSUM: 3b3655541d6849a42793eeb16720ae3a21f561bc
+PODFILE CHECKSUM: f65bca2c6017cca01d8afe4c053443e9f131a7da
 
 COCOAPODS: 1.10.1

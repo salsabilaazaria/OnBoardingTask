@@ -12,12 +12,14 @@ class PostNode: ASTableNode {
     private let posts: [Post]
     
     init(posts: [Post]) {
+		print("POSTNODEEEEE")
         self.posts = posts
         
         super.init(style: .plain)
         
         self.delegate = self
         self.dataSource = self
+		
         
         self.view.separatorStyle = .none
 //        self.view.separatorColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
@@ -30,6 +32,7 @@ class PostNode: ASTableNode {
 
 extension PostNode: ASTableDataSource, ASTableDelegate{
     func numberOfSections(in tableNode: ASTableNode) -> Int {
+		print("NUMBER OF SECTION")
         return 1
     }
     
@@ -45,6 +48,7 @@ extension PostNode: ASTableDataSource, ASTableDelegate{
         
         // this may be executed on a background thread - it is important to make sure it is thread safe
         let cellNodeBlock = { () -> ASCellNode in
+			print("CELL NODEE BLOCK")
             return OnePost(post: post)
         }
         
