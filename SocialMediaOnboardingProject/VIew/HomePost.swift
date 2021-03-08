@@ -22,8 +22,8 @@ class HomePost: ASTableNode{
 		self.delegate = self
 		self.dataSource = self
 		
-		self.view.separatorStyle = .none
-		//        self.view.separatorColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+		self.view.separatorStyle = .singleLine
+		self.view.separatorColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
 		
 		self.style.width = ASDimension(unit: .fraction, value: 1)
 		self.style.height = ASDimension(unit: .fraction, value: 1)
@@ -40,25 +40,29 @@ extension HomePost: ASTableDataSource, ASTableDelegate{
 	}
 	
 	func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+		print("postcount")
 		return posts.count
 	}
 	
 	func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+		print("ngisi table")
 		//ngisi table
 		guard posts.count > indexPath.row else { return { ASCellNode() } }
 		
 		let post = posts[indexPath.row]
 		
 		// this may be executed on a background thread - it is important to make sure it is thread safe
+		
 		let cellNodeBlock = { () -> ASCellNode in
-			print("CELL NODEE BLOCK")
+			print("return OnePost")
 			return OnePost(post: post)
 		}
-		
+	
 		return cellNodeBlock
 	}
 	
 	func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
+		print("deselectRow")
 		tableNode.deselectRow(at: indexPath, animated: true)
 	}
 }

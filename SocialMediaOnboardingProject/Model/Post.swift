@@ -15,6 +15,7 @@ struct Post{
       let likeCount: Int
       let commentCount: Int
       let description: String
+	var indexPath: Int = -1
     
     internal static func createdummypost() -> [Post]{
         
@@ -41,10 +42,16 @@ struct Post{
                               likeCount: 3,
                               commentCount: 4,
                               description: "Looking for RapidMinder course")
+		
+		let post5 = Post(user: User.user5,
+								 timepost: "02/01/2021" ,
+								 likeCount: 3,
+								 commentCount: 4,
+								 description: "Congratulate Rifqi on his new position at PT Drife Solusi Integrasi")
            
         
         
-        return [post1,post2,post3,post4]
+        return [post1,post2,post3,post4, post5]
     }
      
 

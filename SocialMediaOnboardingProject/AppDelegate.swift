@@ -12,20 +12,22 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	var window: UIWindow?
+	 let flowCoordinator = RootFlowCoordinator()
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
 		
-		let vc = ViewController()
-
-		let navVC = UINavigationController(rootViewController: vc)
-		navVC.navigationBar.backgroundColor = .white
-		navVC.navigationBar.isTranslucent = false
-		vc.title = "Social Media"
+//		let vc = ViewController()
+//
+//		let navVC = UINavigationController(rootViewController: vc)
+//		navVC.navigationBar.backgroundColor = .white
+//		navVC.navigationBar.isTranslucent = false
+//		vc.title = "Social Media"
 		
 		let frame = UIScreen.main.bounds
 		window = UIWindow(frame: frame)
-		window?.rootViewController = navVC
+//		window?.rootViewController = navVC
+		window?.rootViewController = flowCoordinator.createRootViewController()
 		window?.makeKeyAndVisible()
 		
 		

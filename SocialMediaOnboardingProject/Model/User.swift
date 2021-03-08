@@ -28,6 +28,10 @@ struct User {
     static var user4: User {
         return User(username: "Felicia Angeline", userPhoto: #imageLiteral(resourceName: "person.jpg"),userheadline: "Data Analyst at BCA")
     }
+	
+	static var user5: User {
+		   return User(username: "Rifqi Aditya", userPhoto: #imageLiteral(resourceName: "person.jpg"),userheadline: "Software Engineer Intern at PT Drife Solusi Integrasi")
+	   }
 
 }
 

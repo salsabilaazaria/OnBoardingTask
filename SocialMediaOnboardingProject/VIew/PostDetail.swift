@@ -6,4 +6,23 @@
 //  Copyright © 2021 salsabilaazaria. All rights reserved.
 //
 
-import Foundation
+
+
+import AsyncDisplayKit
+
+class PostDetail: ASDisplayNode {
+//    var post: Post
+	
+//    var didLove: (()-> Void)?
+//	var header: Header
+    
+//    init(post: Post) {
+//        self.post = post
+//		self.header = Header(post: post)
+//
+		
+ 
+                
+      
+    
+}

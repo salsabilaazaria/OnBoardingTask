@@ -23,20 +23,24 @@ class Header: ASDisplayNode{
 		//buat foto dan di set ukurannya
 		profilePicture = ASImageNode()
 		profilePicture.image = postheader.user.userPhoto
-		profilePicture.style.preferredSize = CGSize(width: 40, height: 40)
+		profilePicture.style.preferredSize = CGSize(width: 50, height: 50)
 		//           profilePicture.cornerRadius = 32/2
 		
 		//bikin label name
 		profileName = ASTextNode()
-		profileName.attributedText = NSAttributedString(string: postheader.user.username)
+		profileName.attributedText = NSAttributedString.bold(postheader.user.username)
+		
+		
+	
+		
 		postdate = ASTextNode()
-		postdate.attributedText = NSAttributedString(string: postheader.timepost)
+		postdate.attributedText = NSAttributedString.subtitle(postheader.timepost)
 		//           profileName.attributedText = NSAttributedString.bold(postheader.user.username)
 		
 		//location optional ada atau gaada
 		if let headline = postheader.user.userheadline {
 			profileHeadline = ASTextNode()
-			profileHeadline?.attributedText = NSAttributedString(string: headline)
+			profileHeadline?.attributedText = NSAttributedString.subtitle(headline)
 		}else{
 			profileHeadline = nil
 		}
@@ -46,6 +50,8 @@ class Header: ASDisplayNode{
 		// add the view to rootview, our supernode will automatically add the childnode when supernode detect that childnode will be added to the supernode.
 		self.automaticallyManagesSubnodes = true
 	}
+	
+	
 	
 	override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
 		
@@ -57,21 +63,21 @@ class Header: ASDisplayNode{
 			textStackComponents.append(profileHeadlinecheck)
 		}
 		
+		textStackComponents.append(postdate)
+		
 		let textStack = ASStackLayoutSpec(direction: .vertical,
 										  spacing: 2,
 										  justifyContent: .start,
 										  alignItems: .start,
 										  children: textStackComponents)
 		
-		let HeaderStack = ASStackLayoutSpec(direction: .vertical,
+		let HeaderStack = ASStackLayoutSpec(direction: .horizontal,
 											spacing: 2,
 											justifyContent: .start,
 											alignItems: .start,
 											children: [profilePicture,textStack])
-		
-		let padding = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 8, bottom: 4, right: 8), child: HeaderStack)
-		
-		return padding
+	
+		return HeaderStack
 		
 	}
 	

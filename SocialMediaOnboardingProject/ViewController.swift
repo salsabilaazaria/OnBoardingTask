@@ -9,17 +9,28 @@
 import AsyncDisplayKit
 class ViewController: ASViewController<ASDisplayNode> {
     
-//    private let storyNode: StoryNode
+
     private let postNode: HomePost
 
     init() {
-//        self.storyNode = StoryNode(stories: Story.generateDummyStory())
+
         self.postNode = HomePost(posts: Post.createdummypost())
 
-        super.init(node: ASDisplayNode())
+		super.init(node: self.postNode)
 
         self.node.backgroundColor = .white
         self.node.automaticallyManagesSubnodes = true
+//		self.node.layoutSpecBlock = {_,_ in
+//
+//			let mainStack = ASStackLayoutSpec(direction: .vertical,
+//											  spacing: 0,
+//											  justifyContent: .start,
+//											  alignItems: .stretch,
+//											  children: [
+//												self.postNode])
+//
+//			return mainStack
+//		}
 
 		
     }
