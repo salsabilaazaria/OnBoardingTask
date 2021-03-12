@@ -7,27 +7,37 @@
 ////
 //
 import Foundation
+import RxSwift
+import RxRelay
 
+class PostViewModel {
 
-//class PostViewModel {
-//
-//	var postdetail: Post
-//
-//	init(index: Int) {
-//        generateInitialPosts()
-//		self.postdetail = getdetailpost(index: index)
-//
-//    }
-//
-//    // MARK: - Private methods -
-//
-//    private func generateInitialPosts() {
-//        var posts = Post.createdummypost()
-//
-//    }
-//	func getdetailpost(index: Int) -> Post{
-//		var posts = Post.createdummypost()
-//		return posts[index]
-//	 }
-//}
+//	var post: Post
+	var posts: BehaviorRelay<[Post]> = BehaviorRelay(value: Post.createdummypost())
+	
+    
+
+    
+    init() {
+        
+    }
+	
+	func didLove(index: Int) {
+		print("didlove ViewModel")
+		var post = posts.value[index]
+		let postLike = post.likeCount + 1
+		post.likeCount = postLike
+		
+		var postsTemp = self.posts.value
+		
+		postsTemp[index] = post
+		
+		self.posts.accept(postsTemp)
+		print("viewmodel")
+		print(posts.value)
+		
+	}
+	
+
+}
 

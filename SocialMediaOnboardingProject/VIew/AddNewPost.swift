@@ -16,7 +16,7 @@ class AddNewPost: ASDisplayNode{
     override init() {
         textInput = ASEditableTextNode()
         textInput.attributedPlaceholderText = NSAttributedString(string: "Type something here...")
-        textInput.textContainerInset = UIEdgeInsets(top: UIScreen.main.bounds.height/8 , left: 8, bottom: 8, right: 8);
+        textInput.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8);
         
 	
         super.init()
@@ -34,9 +34,9 @@ class AddNewPost: ASDisplayNode{
                 alignItems: .start,
                 children: [textInput])
 
-        let padding = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 8, bottom: 4, right: 8), child: textInput)
+//        let padding = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 8, bottom: 4, right: 8), child: textInput)
 
-        return padding
+        return mainStack
     }
 	
 }

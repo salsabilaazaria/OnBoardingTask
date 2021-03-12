@@ -7,22 +7,63 @@
 //
 
 
-
 import AsyncDisplayKit
 
-class PostDetail: ASDisplayNode {
-//    var post: Post
-	
-//    var didLove: (()-> Void)?
-//	var header: Header
+class PostDetail: ASCellNode{
+    let post: Post
     
-//    init(post: Post) {
-//        self.post = post
-//		self.header = Header(post: post)
-//
-		
- 
-                
-      
+    let header: Header
+    let postdesc: ASTextNode
+    let postlike: ASTextNode
+    let postcomment: ASTextNode
+    let action: ActionPost
+    
+    init(post: Post) {
+        
+        print("ONEPOST")
+        self.post = post
+        header = Header(post: post)
+        action = ActionPost()
+        
+        postdesc = ASTextNode()
+        postdesc.attributedText = NSAttributedString.normal(post.description)
+        
+        postlike = ASTextNode()
+        let likecount = "\(post.likeCount) likes"
+        postlike.attributedText = NSAttributedString.normal(likecount)
+        
+        postcomment = ASTextNode()
+        let commentcount = "\(post.commentCount) comments"
+        postcomment.attributedText = NSAttributedString.normal(commentcount)
+        
+        super.init()
+        self.automaticallyManagesSubnodes = true
+    }
+    
+    override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+        
+        print("ONEPOST")
+        
+        let likecommentcounterStack = ASStackLayoutSpec(direction: .horizontal,
+                                                        spacing: 2,
+                                                        justifyContent: .center,
+                                                        alignItems: .center,
+                                                        children: [postlike, postcomment])
+        
+
+        
+        let postpadding = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0), child: postdesc)
+        
+        let mainstack = ASStackLayoutSpec(direction: .vertical,
+                                          spacing: 0,
+                                          justifyContent: .start,
+                                          alignItems: .start,
+                                          children: [header, postpadding, likecommentcounterStack, action ])
+        
+        let padding = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 6, bottom: 4, right: 6), child: mainstack)
+        
+        return padding
+    }
+    
     
 }

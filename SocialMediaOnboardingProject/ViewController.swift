@@ -10,16 +10,16 @@ import AsyncDisplayKit
 class ViewController: ASViewController<ASDisplayNode> {
     
 
-    private let postNode: HomePost
+//    private let postNode: HomePost
 
-    init() {
+//    init() {
 
-        self.postNode = HomePost(posts: Post.createdummypost())
+//        self.postNode = HomePost(posts: Post.createdummypost())
 
-		super.init(node: self.postNode)
+//		super.init(node: self.postNode)
 
-        self.node.backgroundColor = .white
-        self.node.automaticallyManagesSubnodes = true
+//        self.node.backgroundColor = .white
+//        self.node.automaticallyManagesSubnodes = true
 //		self.node.layoutSpecBlock = {_,_ in
 //
 //			let mainStack = ASStackLayoutSpec(direction: .vertical,
@@ -33,7 +33,7 @@ class ViewController: ASViewController<ASDisplayNode> {
 //		}
 
 		
-    }
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

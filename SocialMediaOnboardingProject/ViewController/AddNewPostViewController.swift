@@ -24,13 +24,17 @@ class AddNewPostViewController: ASViewController<ASDisplayNode> {
 	
 		self.AddNew = AddNewPost()
 
-		super.init(node: self.AddNew)
+        super.init(node: self.AddNew)
 		self.onNavigationEvent = onNavigationEvent
-		title = "Posts"
-	
+		title = "Social Media"
+  
+        
+        edgesForExtendedLayout = []
+        
+       
         self.node.backgroundColor = .white
         self.node.automaticallyManagesSubnodes = true
-
+        
 
 		
     }

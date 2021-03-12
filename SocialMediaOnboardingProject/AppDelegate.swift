@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		let frame = UIScreen.main.bounds
 		window = UIWindow(frame: frame)
-//		window?.rootViewController = navVC
+
 		window?.rootViewController = flowCoordinator.createRootViewController()
 		window?.makeKeyAndVisible()
 		

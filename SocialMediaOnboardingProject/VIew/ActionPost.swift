@@ -9,7 +9,7 @@
 import AsyncDisplayKit
 
 class ActionPost: ASDisplayNode{
-	
+	var didLove: (() -> Void)?
 	
 	private let likeImg: ASImageNode
 	private let likeText: ASTextNode
@@ -20,6 +20,7 @@ class ActionPost: ASDisplayNode{
 	private let shareImg: ASImageNode
 	private let shareText: ASTextNode
 	private let shareButton: ASButtonNode
+   
 
 	
 	override init() {
@@ -30,8 +31,6 @@ class ActionPost: ASDisplayNode{
 		self.likeText = ASTextNode()
 		likeText.attributedText = NSAttributedString.normal("Like")
 		self.likeButton = ASButtonNode()
-		
-		
 		
 		self.commentImg = ASImageNode()
 		commentImg.image = #imageLiteral(resourceName: "comment")
@@ -47,12 +46,16 @@ class ActionPost: ASDisplayNode{
 		shareText.attributedText = NSAttributedString.normal("Share")
 		self.shareButton = ASButtonNode()
 		
-		
-		
 		super.init()
+        
+        likeButton.addTarget(self, action: #selector(likePressed), forControlEvents: .touchUpInside)
 
 		self.automaticallyManagesSubnodes = true
 	}
+    @objc func likePressed(sender: ASButtonNode) {
+		print("didlove action post")
+		self.didLove?()
+    }
 	
 	
 	
@@ -77,7 +80,7 @@ class ActionPost: ASDisplayNode{
 //		sharestack.style.preferredSize = CGSize(width: UIScreen.main.bounds.width/3, height: 15)
 		
 
-		let actionStack = ASStackLayoutSpec(direction: .horizontal, spacing: 8, justifyContent: .start, alignItems: .start, children: [likeOverlay,commentOverlay,shareOverlay])
+		let actionStack = ASStackLayoutSpec(direction: .horizontal, spacing: 10, justifyContent: .start, alignItems: .start, children: [likeOverlay,commentOverlay,shareOverlay])
 		
 		let actionInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0), child: actionStack)
 		
